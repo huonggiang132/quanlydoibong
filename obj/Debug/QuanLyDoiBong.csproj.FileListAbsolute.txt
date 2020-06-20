@@ -1,0 +1,14 @@
+D:\CSLT2\QuanLyDoiBong\bin\Debug\QuanLyDoiBong.exe.config
+D:\CSLT2\QuanLyDoiBong\bin\Debug\QuanLyDoiBong.exe
+D:\CSLT2\QuanLyDoiBong\bin\Debug\QuanLyDoiBong.pdb
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.csprojAssemblyReference.cache
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.FrmMain.resources
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.FrmCauThu.resources
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.FrmDoiBong.resources
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.FrmTranDau.resources
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.Properties.Resources.resources
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.csproj.GenerateResource.cache
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.csproj.CoreCompileInputs.cache
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.exe
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.pdb
+D:\CSLT2\QuanLyDoiBong\obj\Debug\QuanLyDoiBong.FrmLogin.resources
