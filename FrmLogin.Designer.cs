@@ -44,9 +44,9 @@
             this.lb.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lb.Location = new System.Drawing.Point(125, 78);
             this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(130, 29);
+            this.lb.Size = new System.Drawing.Size(137, 29);
             this.lb.TabIndex = 0;
-            this.lb.Text = "Username";
+            this.lb.Text = "Username:";
             // 
             // label2
             // 
@@ -54,9 +54,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.Location = new System.Drawing.Point(125, 152);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 29);
+            this.label2.Size = new System.Drawing.Size(131, 29);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Password";
+            this.label2.Text = "Password:";
             // 
             // btnLogin
             // 
@@ -95,6 +95,7 @@
             this.txtPass.Name = "txtPass";
             this.txtPass.Size = new System.Drawing.Size(176, 34);
             this.txtPass.TabIndex = 2;
+            this.txtPass.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -102,18 +103,17 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(226, 23);
+            this.label1.Location = new System.Drawing.Point(145, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 36);
+            this.label1.Size = new System.Drawing.Size(363, 36);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Đăng nhập ";
+            this.label1.Text = "ĐĂNG NHẬP TÀI KHOẢN";
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(642, 370);
+            this.ClientSize = new System.Drawing.Size(662, 373);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtusername);
             this.Controls.Add(this.btnCancel);
@@ -121,8 +121,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lb);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
-            this.Text = "FrmLogin";
+            this.RightToLeftLayout = true;
+            this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

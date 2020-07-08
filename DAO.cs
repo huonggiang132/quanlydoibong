@@ -54,6 +54,24 @@ namespace QuanLyDoiBong
             MyData.Fill(table);
             return table;
         }
+        public static void LoadDataToTable(string sql)
+        {
+            SqlCommand cmd;
+            cmd = new SqlCommand();
+            cmd.Connection = DAO.conn;
+            cmd.CommandText = sql;
+
+            try
+            {
+                cmd.ExecuteNonQuery();// Thực hiện câu lệnh SQL
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            cmd.Dispose();
+            cmd = null;
+        }
         public static bool checkKeyExit(string sql)
         {
             bool kq = false;
@@ -73,7 +91,51 @@ namespace QuanLyDoiBong
             combo.ValueMember = ValueField;
             combo.DisplayMember = DisplayField;
         }
+        //Tiên Tiên
+        public static void RunSqlDel(string sql)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = DAO.conn;
+            cmd.CommandText = sql;
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (System.Exception)
+            {
+                MessageBox.Show("Dữ liệu đang được dùng, không thể xóa...", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            cmd.Dispose();
+            cmd = null;
+        }
         
+        public static string GetFieldValues(string sql)
+        {
+            string ma = "";
+            SqlCommand cmd = new SqlCommand(sql, DAO.conn);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                ma = reader.GetValue(0).ToString();
+            }
+            reader.Close();
+            return ma;
+        }
+        public static DataTable GetDataToTable(string sql)
+        {
+            SqlDataAdapter Mydata = new SqlDataAdapter();	// Khai báo
+            // Tạo đối tượng Command thực hiện câu lệnh SELECT        
+            Mydata.SelectCommand = new SqlCommand();
+            Mydata.SelectCommand.Connection = DAO.conn; 	// Kết nối CSDL
+            Mydata.SelectCommand.CommandText = sql;	// Gán câu lệnh SELECT
+            DataTable table = new DataTable();    // Khai báo DataTable nhận dữ liệu trả về
+            Mydata.Fill(table); 	//Thực hiện câu lệnh SELECT và đổ dữ liệu vào bảng table
+            return table;
+        }
+
 
     }
+
+
 }

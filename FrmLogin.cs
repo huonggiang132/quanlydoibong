@@ -20,34 +20,37 @@ namespace QuanLyDoiBong
             InitializeComponent();
         }
 
+        
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source=LAPTOP-UM8CT4CV\\SQLEXPRESS;Initial Catalog=quanlysanbong;Integrated Security=True");
-            string sqlSelect = " Select * from Login where username = N" + txtusername + " and password = N" + txtPass + "";
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(sqlSelect, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if( reader.Read()==true)
+            string user = "admin";
+            string pass = "csltnhom5";
+            if (user.Equals(txtusername.Text) && pass.Equals(txtPass.Text))
             {
+                
                 this.Hide();
                 Form main = new FrmMain();
                 main.Show();
-
-            }   
+            }
             else
-            {
-                MessageBox.Show(" Sai tên tài khoản hoặc mật khẩu. Bạn hãy nhập lại!");
+                
+                MessageBox.Show("Đăng nhập thất bại", "Notification");
                 txtusername.Text = "";
                 txtPass.Text = "";
                 txtusername.Focus();
-
-            }
-            conn.Close();
         }
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            DAO.OpenConnection();
+
+        }
+       
     }
 }

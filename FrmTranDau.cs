@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.Sql;
 using System.Data.SqlClient;
 
+
 namespace QuanLyDoiBong
 {
     public partial class FrmTranDau : Form
@@ -77,6 +78,7 @@ namespace QuanLyDoiBong
             cmbMaDoiNha.SelectedIndex = -1;
             cmbMaDoiKhach.SelectedIndex = -1;
             txtGhiChu.Text = "";
+            txtMaTran.Focus();
            
             
         }
@@ -142,12 +144,13 @@ namespace QuanLyDoiBong
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string sql = "delete from trandau where matrandau = '" + txtMaTran.Text + "'";
-            SqlCommand cmd = new SqlCommand();
-            DAO.OpenConnection();
-            cmd.CommandText = sql;
-            cmd.Connection = DAO.conn;
-            cmd.ExecuteNonQuery();
-            DAO.CloseConnetion();
+            //SqlCommand cmd = new SqlCommand();
+            //DAO.OpenConnection();
+            //cmd.CommandText = sql;
+            //cmd.Connection = DAO.conn;
+            //cmd.ExecuteNonQuery();
+            //DAO.CloseConnetion();
+            DAO.LoadDataTable(sql);
             LoadDataToGrivew();
         }
 
@@ -158,11 +161,58 @@ namespace QuanLyDoiBong
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            
             string sql = "Update trandau set luotdau = N'" + txtLuotDau.Text +"', vongdau='"+txtVongDau.Text+
                       "' where matrandau = '" + txtMaTran.Text + "'";
 
             DAO.LoadDataTable(sql);
             LoadDataToGrivew();
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            DAO.OpenConnection();
+            if ((txtBanThangDN.Text == "") && (cmbMaDoiNha.Text == "") && (txtTheDoDN.Text == ""))
+            {
+                MessageBox.Show("Hãy nhập điều kiện tìm kiếm!!!");
+                return;
+            }
+            string sql = "select * from trandau where 1=1";
+            if (txtBanThangDN.Text != "")
+            {
+                sql = sql + " and sobanthangdoinha = N'" + txtBanThangDN.Text + "'";
+
+            }
+            if (cmbMaDoiNha.Text != "")
+            {
+                sql = sql + "  and madoinha = '" + cmbMaDoiNha.SelectedValue + "'";
+
+            }
+            if (txtTheDoDN.Text != "")
+            {
+                sql = sql + "  and sothedodoinha = " + txtTheDoDN.Text;
+
+            }
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, DAO.conn);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            if (table.Rows.Count == 0)
+                MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!!");
+            else
+                MessageBox.Show("Có " + table.Rows.Count + " bản ghi thỏa mãn điều kiện!!!");
+            GridViewTranDau.DataSource = table;
+            SqlCommand cmd = new SqlCommand(sql, DAO.conn)
+            {
+                CommandText = sql,
+                Connection = DAO.conn
+            };
+            cmd.ExecuteNonQuery();
+            DAO.CloseConnetion();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

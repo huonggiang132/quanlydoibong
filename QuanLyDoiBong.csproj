@@ -47,6 +47,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO.cs" />
+    <Compile Include="FrmBaoCaoTranDau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBaoCaoTranDau.Designer.cs">
+      <DependentUpon>FrmBaoCaoTranDau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBC_CauThu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBC_CauThu.Designer.cs">
+      <DependentUpon>FrmBC_CauThu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBC_CTnhieuBT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBC_CTnhieuBT.Designer.cs">
+      <DependentUpon>FrmBC_CTnhieuBT.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +88,12 @@
     </Compile>
     <Compile Include="FrmDoiBong.Designer.cs">
       <DependentUpon>FrmDoiBong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTimKiemTD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTimKiemTD.Designer.cs">
+      <DependentUpon>FrmTimKiemTD.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmTranDau.cs">
       <SubType>Form</SubType>
@@ -97,6 +121,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBaoCaoTranDau.resx">
+      <DependentUpon>FrmBaoCaoTranDau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBC_CauThu.resx">
+      <DependentUpon>FrmBC_CauThu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBC_CTnhieuBT.resx">
+      <DependentUpon>FrmBC_CTnhieuBT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,8 +142,20 @@
     <EmbeddedResource Include="FrmDoiBong.resx">
       <DependentUpon>FrmDoiBong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmTimKiemTD.resx">
+      <DependentUpon>FrmTimKiemTD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmTranDau.resx">
       <DependentUpon>FrmTranDau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTrandau_Banthang.resx">
+      <DependentUpon>FrmTrandau_Banthang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTrandau_Cauthu.resx">
+      <DependentUpon>FrmTrandau_Cauthu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTrandau_The.resx">
+      <DependentUpon>FrmTrandau_The.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -120,6 +165,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -133,6 +179,68 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tải xuống.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thêm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sửa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\xóa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hiển thị.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lưu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cập nhật.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\đóng, thoát.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ẢNH.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tìm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
