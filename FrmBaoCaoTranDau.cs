@@ -31,7 +31,8 @@ namespace QuanLyDoiBong
         
         private void btnHienThi_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter adap = new SqlDataAdapter(" select * from trandau where matrandau like '%" + txtmatrandau.Text + "%'", DAO.conn);
+            SqlDataAdapter adap = new SqlDataAdapter(" select * from trandau "
+                +"where matrandau like '%" + txtmatrandau.Text + "%'", DAO.conn);
             DataSet ds = new DataSet();
             adap.Fill(ds, "trandau");
             GridViewBCtrandau.DataSource = ds.Tables["trandau"].DefaultView;

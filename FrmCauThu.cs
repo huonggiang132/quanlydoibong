@@ -15,7 +15,8 @@ namespace QuanLyDoiBong
 {
     public partial class FrmCauThu : Form
     {
-        
+        DataTable cauthu;
+
         public FrmCauThu()
         {
             InitializeComponent();
@@ -27,6 +28,14 @@ namespace QuanLyDoiBong
             LoadDataToGrivew();
             cmbMaDoi.SelectedIndex = -1;
             DAO.FillDataToCombo("select madoi from cauthu", cmbMaDoi, "madoi", "madoi");
+            txtSobanthang.Text = "0";
+            txtSoTheVang.Text = "0";
+            txtSoTheDo.Text = "0";
+            txtsolanrasan.Text = "0";
+
+            txtSoTheVang.ReadOnly = true;
+            txtSoTheDo.ReadOnly = true;
+            txtsolanrasan.ReadOnly = true;
             DAO.CloseConnetion();
         }
         private void LoadDataToGrivew()
@@ -85,7 +94,7 @@ namespace QuanLyDoiBong
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            
+
             txtMaCT.Text = "";
             txtTenCT.Text = "";
             txtViTri.Text = "";
@@ -116,7 +125,7 @@ namespace QuanLyDoiBong
             string sql = "update cauthu set madoi = '" + cmbMaDoi.SelectedValue.ToString() + "', tencauthu = N'" + txtTenCT.Text.Trim().ToString() +
                 "', vitri ='" + txtViTri.Text.Trim() + "', ngaysinh ='" + txtNgaySinh.Text.Trim() + "',soao ='" + txtSoAo.Text.Trim() + /*", anh = '" + txtAnh.Text +*/
                 "' where macauthu = '" + txtMaCT.Text + "'";
-            
+
             DAO.GetDataToTable(sql);
             LoadDataToGrivew();
         }
@@ -174,27 +183,27 @@ namespace QuanLyDoiBong
                 return;
             }*/
             sql = "select * from cauthu where macauthu = '" + txtMaCT.Text.Trim() + "'";
-            
+
             if (DAO.checkKeyExit(sql))
             {
                 MessageBox.Show("mã cầu thủ đã tồn tại");
-                
+
                 txtMaCT.Focus();
                 return;
             }
             else
             {
-                
+
                 sql = " insert into cauthu (macauthu,madoi,tencauthu,vitri,ngaysinh,soao,sobanthang,sothevang,sothedo,maquoctich,solanrasan) " +
-                    " values('" 
+                    " values('"
                     + txtMaCT.Text.Trim() + "',N'"
-                    + cmbMaDoi.SelectedValue + "',N'" 
-                    + txtTenCT.Text.Trim() + "',N'" 
-                    + txtViTri.Text.Trim() + "',N'" 
-                    + txtNgaySinh.Text.Trim() + "',N'" 
-                    + txtSoAo.Text.Trim() +  "',null,null,null,'"
+                    + cmbMaDoi.SelectedValue + "',N'"
+                    + txtTenCT.Text.Trim() + "',N'"
+                    + txtViTri.Text.Trim() + "',N'"
+                    + txtNgaySinh.Text.Trim() + "',N'"
+                    + txtSoAo.Text.Trim() + "',null,null,null,'"
                     + txtMaQuocTich.Text.Trim() + "',null)";
-                
+
                 MessageBox.Show(sql);
 
                 DAO.LoadDataToTable(sql);
@@ -213,24 +222,20 @@ namespace QuanLyDoiBong
             DAO.OpenConnection();
             if ((txtTenCT.Text == "") && (cmbMaDoi.Text == "") && (txtSobanthang.Text == ""))
             {
-                MessageBox.Show("Hãy nhập điều kiện tìm kiếm!!!");
-                return;
+                MessageBox.Show("Hãy nhập điều kiện tìm kiếm!!!");    return;
             }
             string sql = "select * from cauthu where 1=1";
             if (txtTenCT.Text != "")
             {
                 sql = sql + " and tencauthu = N'" + txtTenCT.Text + "'";
-
             }
             if (cmbMaDoi.Text != "")
             {
                 sql = sql + "  and madoi = '" + cmbMaDoi.SelectedValue + "'";
-
             }
             if (txtSobanthang.Text != "")
             {
                 sql = sql + "  and sobanthang = " + txtSobanthang.Text;
-
             }
             SqlDataAdapter adapter = new SqlDataAdapter(sql, DAO.conn);
             DataTable table = new DataTable();
@@ -251,7 +256,34 @@ namespace QuanLyDoiBong
 
         private void btnHienThi_Click(object sender, EventArgs e)
         {
+            string sql;
+            if ((cmbMaDoi.Text == ""))
+            {
+                MessageBox.Show("Hãy nhập điều kiện hiển thị!!!");
+                return;
+            }
+            sql = "SELECT * FROM cauthu WHERE 1=1";
+
+            if (cmbMaDoi.Text != "")
+                sql = sql + " AND madoi = '" + cmbMaDoi.SelectedValue + "'";
+
+            cauthu = DAO.GetDataToTable(sql);
+            if (cauthu.Rows.Count == 0)
+                MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!!");
+            else
+                MessageBox.Show("Có " + cauthu.Rows.Count + " bản ghi thỏa mãn điều kiện!!!");
+
+            GridViewCauThu.DataSource = cauthu;
+        }
+
+        private void txtMaCT_TextChanged(object sender, EventArgs e)
+        {
             
+        }
+
+        private void txtSobanthang_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

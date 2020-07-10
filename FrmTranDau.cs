@@ -28,6 +28,19 @@ namespace QuanLyDoiBong
             cmbMaDoiKhach.SelectedIndex = -1;
             DAO.FillDataToCombo("select madoinha from trandau", cmbMaDoiNha, "madoinha", "madoinha");
             cmbMaDoiNha.SelectedIndex = -1;
+            txtBanThangDN.Text = "0";
+            txtbanthuaĐN.Text = "0";
+            txtTheDoDN.Text = "0";
+            txtthevangĐN.Text = "0";
+            txtthedoĐK.Text = "0";
+            txtthevangĐK.Text = "0";
+
+
+            txtbanthuaĐN.ReadOnly = true;            
+            txtthevangĐN.ReadOnly = true;
+            txtthedoĐK.ReadOnly = true;
+            txtthevangĐK.ReadOnly = true;
+
             DAO.CloseConnetion();
 
         }
@@ -128,7 +141,8 @@ namespace QuanLyDoiBong
             }
             else
             {
-                string sql = "insert into trandau (matrandau,luotdau,vongdau,madoinha,madoikhach,sobanthangdoinha,sobanthuadoinha," +
+                string sql = "insert into trandau (matrandau,luotdau,vongdau,madoinha,"+
+                    "madoikhach,sobanthangdoinha,sobanthuadoinha," +
                     "sothevangdoinha,sothedodoinha,sothevangdoikhach,sothedodoikhach,ghichu)" +
                     " values ('" + txtMaTran.Text.Trim() + "',N'" + txtLuotDau.Text.Trim() + "',N'"
                     + txtVongDau.Text.Trim() + "','" + cmbMaDoiNha.SelectedValue.ToString() + "','"
@@ -144,12 +158,7 @@ namespace QuanLyDoiBong
         private void btnXoa_Click(object sender, EventArgs e)
         {
             string sql = "delete from trandau where matrandau = '" + txtMaTran.Text + "'";
-            //SqlCommand cmd = new SqlCommand();
-            //DAO.OpenConnection();
-            //cmd.CommandText = sql;
-            //cmd.Connection = DAO.conn;
-            //cmd.ExecuteNonQuery();
-            //DAO.CloseConnetion();
+            
             DAO.LoadDataTable(sql);
             LoadDataToGrivew();
         }
@@ -162,7 +171,8 @@ namespace QuanLyDoiBong
         private void btnSua_Click(object sender, EventArgs e)
         {
             
-            string sql = "Update trandau set luotdau = N'" + txtLuotDau.Text +"', vongdau='"+txtVongDau.Text+
+            string sql = "Update trandau set luotdau = N'" + txtLuotDau.Text +
+                      "', vongdau='"+txtVongDau.Text+
                       "' where matrandau = '" + txtMaTran.Text + "'";
 
             DAO.LoadDataTable(sql);
@@ -174,32 +184,27 @@ namespace QuanLyDoiBong
             DAO.OpenConnection();
             if ((txtBanThangDN.Text == "") && (cmbMaDoiNha.Text == "") && (txtTheDoDN.Text == ""))
             {
-                MessageBox.Show("Hãy nhập điều kiện tìm kiếm!!!");
-                return;
+                MessageBox.Show("Hãy nhập điều kiện tìm kiếm!!!"); return;
             }
             string sql = "select * from trandau where 1=1";
             if (txtBanThangDN.Text != "")
             {
                 sql = sql + " and sobanthangdoinha = N'" + txtBanThangDN.Text + "'";
-
             }
             if (cmbMaDoiNha.Text != "")
             {
                 sql = sql + "  and madoinha = '" + cmbMaDoiNha.SelectedValue + "'";
-
             }
             if (txtTheDoDN.Text != "")
             {
                 sql = sql + "  and sothedodoinha = " + txtTheDoDN.Text;
-
             }
             SqlDataAdapter adapter = new SqlDataAdapter(sql, DAO.conn);
             DataTable table = new DataTable();
             adapter.Fill(table);
             if (table.Rows.Count == 0)
                 MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!!");
-            else
-                MessageBox.Show("Có " + table.Rows.Count + " bản ghi thỏa mãn điều kiện!!!");
+            else MessageBox.Show("Có " + table.Rows.Count + " bản ghi thỏa mãn điều kiện!!!");
             GridViewTranDau.DataSource = table;
             SqlCommand cmd = new SqlCommand(sql, DAO.conn)
             {
@@ -214,5 +219,59 @@ namespace QuanLyDoiBong
         {
 
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLuotDau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbMaDoiKhach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTinhdiem_Click(object sender, EventArgs e)
+        {
+            string sql;
+            double Diem = 0, BanThangDN, BanThangDK;
+            BanThangDK = Convert.ToDouble(DAO.GetFieldValues("select sobanthuadoinha from trandau where matrandau = N'" + txtMaTran.Text + "'"));
+            BanThangDN = Convert.ToDouble(DAO.GetFieldValues("select sobanthangdoinha from trandau where matrandau = N'" + txtMaTran.Text + "'"));
+            //Diem = Convert.ToDouble(DAO.GetFieldValues("select diem from doibong where diem = N'" + txtDiem.Text + "'"));
+
+            if (BanThangDN > BanThangDK)
+            {
+
+                Diem = Diem + 3;
+
+            }
+            else if (BanThangDN == BanThangDK)
+            {
+                Diem = Diem + 1;
+
+            }
+            DAO.OpenConnection();
+            sql = "UPDATE CapNhatĐB SET diem =" + Diem + " WHERE madoi = N'" + cmbMaDoiNha.SelectedValue + "'";
+            sql = "UPDATE CapNhatĐB SET diem =" + Diem + " WHERE madoi = N'" + cmbMaDoiKhach.SelectedValue + "'";
+            txtDiem.Text = Diem.ToString();
+            DAO.LoadDataToTable(sql);
+            LoadDataToGrivew();
+            DAO.CloseConnetion();
+        }
+        
     }
 }

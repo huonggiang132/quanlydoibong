@@ -65,6 +65,24 @@
     <Compile Include="FrmBC_CTnhieuBT.Designer.cs">
       <DependentUpon>FrmBC_CTnhieuBT.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCapNhatCT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCapNhatCT.Designer.cs">
+      <DependentUpon>FrmCapNhatCT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCapNhatTĐ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCapNhatTĐ.Designer.cs">
+      <DependentUpon>FrmCapNhatTĐ.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCapNhatĐB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCapNhatĐB.Designer.cs">
+      <DependentUpon>FrmCapNhatĐB.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +147,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBC_CTnhieuBT.resx">
       <DependentUpon>FrmBC_CTnhieuBT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCapNhatCT.resx">
+      <DependentUpon>FrmCapNhatCT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCapNhatTĐ.resx">
+      <DependentUpon>FrmCapNhatTĐ.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCapNhatĐB.resx">
+      <DependentUpon>FrmCapNhatĐB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -241,6 +268,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\tìm.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tinhdiem.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

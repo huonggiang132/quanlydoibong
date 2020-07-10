@@ -16,12 +16,9 @@ namespace QuanLyDoiBong
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FrmCauThu());
-            Application.Run(new FrmLogin());
-            //Application.Run(new FrmBaoCaoTranDau());
-            //Application.Run(new FrmTrandau_Cauthu());
-            //Application.Run(new FrmTranDau());
-            //Application.Run(new FrmTrandau_The());
+            //Application.Run(new FrmMain());
+             Application.Run(new FrmLogin());
+            
         }
     }
 }

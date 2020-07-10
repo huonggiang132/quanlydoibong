@@ -14,7 +14,7 @@ namespace QuanLyDoiBong
     class DAO
     {
         public static SqlConnection conn;
-        public static string connectionString = "Data Source=LAPTOP-UM8CT4CV\\SQLEXPRESS;Initial Catalog=quanlysanbong;Integrated Security=True";
+        public static string connectionString = "Data Source=LAPTOP-UM8CT4CV\\SQLEXPRESS;Initial Catalog=BTLquanlydoibong;Integrated Security=True";
         public static void OpenConnection()
         {
             conn = new SqlConnection();
@@ -111,6 +111,7 @@ namespace QuanLyDoiBong
         
         public static string GetFieldValues(string sql)
         {
+            DAO.OpenConnection();
             string ma = "";
             SqlCommand cmd = new SqlCommand(sql, DAO.conn);
             SqlDataReader reader;
@@ -121,6 +122,7 @@ namespace QuanLyDoiBong
             }
             reader.Close();
             return ma;
+            DAO.CloseConnetion();
         }
         public static DataTable GetDataToTable(string sql)
         {

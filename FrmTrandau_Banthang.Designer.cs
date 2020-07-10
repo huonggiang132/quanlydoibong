@@ -49,6 +49,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.sobanthangdoinha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GridViewTrandau_Banthang)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,12 +78,13 @@
             this.matrandau,
             this.macauthu,
             this.thoigianphut,
-            this.ghichu});
-            this.GridViewTrandau_Banthang.Location = new System.Drawing.Point(198, 251);
+            this.ghichu,
+            this.sobanthangdoinha});
+            this.GridViewTrandau_Banthang.Location = new System.Drawing.Point(126, 258);
             this.GridViewTrandau_Banthang.Name = "GridViewTrandau_Banthang";
             this.GridViewTrandau_Banthang.RowHeadersWidth = 51;
             this.GridViewTrandau_Banthang.RowTemplate.Height = 24;
-            this.GridViewTrandau_Banthang.Size = new System.Drawing.Size(557, 178);
+            this.GridViewTrandau_Banthang.Size = new System.Drawing.Size(683, 179);
             this.GridViewTrandau_Banthang.TabIndex = 3;
             this.GridViewTrandau_Banthang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridViewTrandau_Banthang_CellContentClick);
             // 
@@ -261,6 +263,13 @@
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // sobanthangdoinha
+            // 
+            this.sobanthangdoinha.HeaderText = "số bàn thắng đội nhà";
+            this.sobanthangdoinha.MinimumWidth = 6;
+            this.sobanthangdoinha.Name = "sobanthangdoinha";
+            this.sobanthangdoinha.Width = 125;
+            // 
             // FrmTrandau_Banthang
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -314,5 +323,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ghichu;
         private System.Windows.Forms.Button btnHienThi;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sobanthangdoinha;
     }
 }

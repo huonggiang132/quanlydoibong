@@ -28,12 +28,19 @@ namespace QuanLyDoiBong
             LoadDataToGriview();
             DAO.FillDataToCombo("select madoi from DoiBong", cmbMaDoi, "madoi", "madoi");
             cmbMaDoi.SelectedIndex = -1;
-            
+            txtdiem.Text = "0";
+            txtsobanthang.Text = "0";
+            txtsobanthua.Text = "0";
+            txtsoluongcauthu.Text = "0";
+
+            txtdiem.ReadOnly = true;
+            txtsobanthang.ReadOnly = true;
+            txtsobanthua.ReadOnly = true;
+            txtsoluongcauthu.ReadOnly = true;
             DAO.CloseConnetion();
         }
         private void LoadDataToGriview()
-        {
-            
+        {           
 
             try
             {
@@ -91,9 +98,7 @@ namespace QuanLyDoiBong
         }
 
         private void btnThem_Click(object sender, EventArgs e)
-        {
-
-            
+        {            
             ResetValues();
             int count = 0;
             count = GridViewDoiBong.Rows.Count;
@@ -105,7 +110,6 @@ namespace QuanLyDoiBong
             {
                 cmbMaDoi.Text = "DB0" + (chuoi2 + 1).ToString();
             }
-
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -264,5 +268,7 @@ namespace QuanLyDoiBong
                 }
 
             }
+
+        
     }
 }

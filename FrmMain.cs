@@ -96,5 +96,23 @@ namespace QuanLyDoiBong
             FrmBC_CTnhieuBT f1 = new FrmBC_CTnhieuBT();
             f1.Show();
         }
+
+        private void cậpNhậtĐộiBóngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCapNhatĐB f1 = new FrmCapNhatĐB();
+            f1.Show();
+        }
+
+        private void cậpNhậtTrậnĐấuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCapNhatTĐ f1 = new FrmCapNhatTĐ();
+            f1.Show();
+        }
+
+        private void cậpNhậtCầuThủToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCapNhatCT f1 = new FrmCapNhatCT();
+            f1.Show();
+        }
     }
 }

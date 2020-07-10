@@ -53,6 +53,7 @@ namespace QuanLyDoiBong
             txtMacauthu.Text = GridViewTrandau_Banthang.CurrentRow.Cells["macauthu"].Value.ToString();
             txtThoigian.Text = GridViewTrandau_Banthang.CurrentRow.Cells["thoigianphut"].Value.ToString();
             txtghichu.Text = GridViewTrandau_Banthang.CurrentRow.Cells["ghichu"].Value.ToString();
+            
             txtMatran.Enabled = false;
             
         }
@@ -126,7 +127,7 @@ namespace QuanLyDoiBong
             {
 
                 string sql = " insert into trandau_banthang(matrandau,macauthu,thoigianphut,ghichu)  values('" + txtMatran.Text.Trim() + "','"
-                    + txtMacauthu.Text.Trim() + "'," + txtThoigian.Text.Trim() + ",'" + txtghichu.Text.Trim() + "')";
+                    + txtMacauthu.Text.Trim() + "'," + txtThoigian.Text.Trim() + ",'" + txtghichu.Text.Trim() +  "')";
                 DAO.LoadDataTable(sql);
                 LoadDataToGrivew();
             }
@@ -134,7 +135,8 @@ namespace QuanLyDoiBong
 
         private void btnHienThi_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter adap = new SqlDataAdapter(" select * from trandau_banthang where matrandau like '%" + txtMatran.Text + "%'", DAO.conn);
+            SqlDataAdapter adap = new SqlDataAdapter(" select * from trandau_banthang where matrandau like '%"
+                + txtMatran.Text + "%'", DAO.conn);
             DataSet ds = new DataSet();
             adap.Fill(ds, "trandau_banthang");
             GridViewTrandau_Banthang.DataSource = ds.Tables["trandau_banthang"].DefaultView;

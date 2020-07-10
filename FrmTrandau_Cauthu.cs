@@ -145,7 +145,8 @@ namespace QuanLyDoiBong
 
         private void btnHienThi_Click(object sender, EventArgs e)
         {
-            SqlDataAdapter adap = new SqlDataAdapter(" select * from trandau_cauthu where matrandau like '%" + txtMatran.Text + "%'", DAO.conn);
+            SqlDataAdapter adap = new SqlDataAdapter(" select * from trandau_cauthu where matrandau like '%" 
+                + txtMatran.Text + "%'", DAO.conn);
             DataSet ds = new DataSet();
             adap.Fill(ds, "trandau_cauthu");
             GridViewTrandau_Cauthu.DataSource = ds.Tables["trandau_cauthu"].DefaultView;
